@@ -1,0 +1,452 @@
+Exercise:
+
+1.Write a Mongodb query to display all the documents in the collection restaurants.
+ db.addresses.find().pretty()
+{
+        "_id" : ObjectId("6077e024bbae6913b853fb14"),
+        "address" : {
+                "building" : "1007",
+                "coord" : [
+                        -73.856077,
+                        40.848447
+                ],
+                "street" : "Morris Park Ave",
+                "zipcode" : "10462"
+        },
+        "borough" : "Bronx",
+        "cuisine" : "Bakery",
+        "grades" : [
+                {
+                        "date" : ISODate("2014-03-03T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 2
+                },
+                {
+                        "date" : ISODate("2013-09-11T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 6
+                },
+                {
+                        "date" : ISODate("2013-01-24T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 10
+                },
+                {
+                        "date" : ISODate("2011-11-23T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 9
+                },
+                {
+                        "date" : ISODate("2011-03-10T00:00:00Z"),
+                        "grade" : "B",
+                        "score" : 14
+                }
+        ],
+        "name" : "Morris Park Bake Shop",
+        "restaurant_id" : "30075445"
+}
+{
+        "_id" : ObjectId("6077e024bbae6913b853fb15"),
+        "address" : {
+                "building" : "469",
+                "coord" : [
+                        -73.961704,
+                        40.662942
+                ],
+                "street" : "Flatbush Avenue",
+                "zipcode" : "11225"
+        },
+        "borough" : "Brooklyn",
+        "cuisine" : "Hamburgers",
+        "grades" : [
+                {
+                        "date" : ISODate("2014-12-30T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 8
+                },
+                {
+                        "date" : ISODate("2014-07-01T00:00:00Z"),
+                        "grade" : "B",
+                        "score" : 23
+                },
+                {
+                        "date" : ISODate("2013-04-30T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 12
+                },
+                {
+                        "date" : ISODate("2012-05-08T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 12
+                }
+        ],
+        "name" : "Wendy'S",
+        "restaurant_id" : "30112340"
+}
+
+2.Write a MongoDB query to display the fields restaurant_id,name, borough and cuisine for all the documents.
+> db.addresses.find({"_id":0, "name":1})
+MongoDB Enterprise atlas-69xcdy-shard-0:PRIMARY> db.addresses.aggregate([{$project:{ restaurant_id:1, name:1, borough:1, cuisine:1}}])
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "borough" : "Bronx", "cuisine" : "Bakery", "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb15"), "borough" : "Brooklyn", "cuisine" : "Hamburgers", "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb16"), "borough" : "Manhattan", "cuisine" : "Irish", "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb17"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Riviera Caterer", "restaurant_id" : "40356018" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb18"), "borough" : "Queens", "cuisine" : "Jewish/Kosher", "name" : "Tov Kosher Kitchen", "restaurant_id" : "40356068" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb19"), "borough" : "Queens", "cuisine" : "American ", "name" : "Brunos On The Boulevard", "restaurant_id" : "40356151" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1a"), "borough" : "Staten Island", "cuisine" : "Jewish/Kosher", "name" : "Kosher Island", "restaurant_id" : "40356442" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1b"), "borough" : "Brooklyn", "cuisine" : "Delicatessen", "name" : "Wilken'S Fine Food", "restaurant_id" : "40356483" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1c"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Regina Caterers", "restaurant_id" : "40356649" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1d"), "borough" : "Brooklyn", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "Taste The Tropics Ice Cream", "restaurant_id" : "40356731" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1e"), "borough" : "Bronx", "cuisine" : "American ", "name" : "Wild Asia", "restaurant_id" : "40357217" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1f"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "C & C Catering Service", "restaurant_id" : "40357437" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb20"), "borough" : "Brooklyn", "cuisine" : "Chinese", "name" : "May May Kitchen", "restaurant_id" : "40358429" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb21"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "1 East 66Th Street Kitchen", "restaurant_id" : "40359480" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb22"), "borough" : "Brooklyn", "cuisine" : "Jewish/Kosher", "name" : "Seuda Foods", "restaurant_id" : "40360045" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb23"), "borough" : "Brooklyn", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "Carvel Ice Cream", "restaurant_id" : "40360076" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb24"), "borough" : "Queens", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "Carvel Ice Cream", "restaurant_id" : "40361322" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb25"), "borough" : "Brooklyn", "cuisine" : "Delicatessen", "name" : "Nordic Delicacies", "restaurant_id" : "40361390" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb26"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Glorious Food", "restaurant_id" : "40361521" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb27"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "The Movable Feast", "restaurant_id" : "40361606" }
+
+3.Writer a Mongodb query to display the fields restaurant_id, name, borough and cuisine,but exclude the field_id for all the documents.
+ db.addresses.aggregate([{$project:{_id:0, restaurant_id:1, name:1, borough:1, cuisine:1}}])
+{ "borough" : "Bronx", "cuisine" : "Bakery", "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "borough" : "Brooklyn", "cuisine" : "Hamburgers", "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "borough" : "Manhattan", "cuisine" : "Irish", "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+{ "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Riviera Caterer", "restaurant_id" : "40356018" }
+{ "borough" : "Queens", "cuisine" : "Jewish/Kosher", "name" : "Tov Kosher Kitchen", "restaurant_id" : "40356068" }
+{ "borough" : "Queens", "cuisine" : "American ", "name" : "Brunos On The Boulevard", "restaurant_id" : "40356151" }
+{ "borough" : "Staten Island", "cuisine" : "Jewish/Kosher", "name" : "Kosher Island", "restaurant_id" : "40356442" }
+{ "borough" : "Brooklyn", "cuisine" : "Delicatessen", "name" : "Wilken'S Fine Food", "restaurant_id" : "40356483" }
+{ "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Regina Caterers", "restaurant_id" : "40356649" }
+{ "borough" : "Brooklyn", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "Taste The Tropics Ice Cream", "restaurant_id" : "40356731" }
+{ "borough" : "Bronx", "cuisine" : "American ", "name" : "Wild Asia", "restaurant_id" : "40357217" }
+{ "borough" : "Brooklyn", "cuisine" : "American ", "name" : "C & C Catering Service", "restaurant_id" : "40357437" }
+{ "borough" : "Brooklyn", "cuisine" : "Chinese", "name" : "May May Kitchen", "restaurant_id" : "40358429" }
+{ "borough" : "Manhattan", "cuisine" : "American ", "name" : "1 East 66Th Street Kitchen", "restaurant_id" : "40359480" }
+{ "borough" : "Brooklyn", "cuisine" : "Jewish/Kosher", "name" : "Seuda Foods", "restaurant_id" : "40360045" }
+{ "borough" : "Brooklyn", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "Carvel Ice Cream", "restaurant_id" : "40360076" }
+{ "borough" : "Queens", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "Carvel Ice Cream", "restaurant_id" : "40361322" }
+{ "borough" : "Brooklyn", "cuisine" : "Delicatessen", "name" : "Nordic Delicacies", "restaurant_id" : "40361390" }
+{ "borough" : "Manhattan", "cuisine" : "American ", "name" : "Glorious Food", "restaurant_id" : "40361521" }
+{ "borough" : "Brooklyn", "cuisine" : "American ", "name" : "The Movable Feast", "restaurant_id" : "40361606" }
+
+4.Writer a Mongodb query to display the fields restaurant_id, name, borough and zip code,but exclude the field_id for all the documents.
+db.addresses.aggregate([{$project:{_id:0, restaurant_id:1, name:1, borough:1, "address.zipcode":1}}])
+{ "address" : { "zipcode" : "10462" }, "borough" : "Bronx", "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "address" : { "zipcode" : "11225" }, "borough" : "Brooklyn", "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "address" : { "zipcode" : "10019" }, "borough" : "Manhattan", "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+{ "address" : { "zipcode" : "11224" }, "borough" : "Brooklyn", "name" : "Riviera Caterer", "restaurant_id" : "40356018" }
+{ "address" : { "zipcode" : "11374" }, "borough" : "Queens", "name" : "Tov Kosher Kitchen", "restaurant_id" : "40356068" }
+{ "address" : { "zipcode" : "11369" }, "borough" : "Queens", "name" : "Brunos On The Boulevard", "restaurant_id" : "40356151" }
+{ "address" : { "zipcode" : "10314" }, "borough" : "Staten Island", "name" : "Kosher Island", "restaurant_id" : "40356442" }
+{ "address" : { "zipcode" : "11234" }, "borough" : "Brooklyn", "name" : "Wilken'S Fine Food", "restaurant_id" : "40356483" }
+{ "address" : { "zipcode" : "11219" }, "borough" : "Brooklyn", "name" : "Regina Caterers", "restaurant_id" : "40356649" }
+{ "address" : { "zipcode" : "11226" }, "borough" : "Brooklyn", "name" : "Taste The Tropics Ice Cream", "restaurant_id" : "40356731" }
+{ "address" : { "zipcode" : "10460" }, "borough" : "Bronx", "name" : "Wild Asia", "restaurant_id" : "40357217" }
+{ "address" : { "zipcode" : "11214" }, "borough" : "Brooklyn", "name" : "C & C Catering Service", "restaurant_id" : "40357437" }
+{ "address" : { "zipcode" : "11208" }, "borough" : "Brooklyn", "name" : "May May Kitchen", "restaurant_id" : "40358429" }
+{ "address" : { "zipcode" : "10065" }, "borough" : "Manhattan", "name" : "1 East 66Th Street Kitchen", "restaurant_id" : "40359480" }
+{ "address" : { "zipcode" : "11223" }, "borough" : "Brooklyn", "name" : "Seuda Foods", "restaurant_id" : "40360045" }
+{ "address" : { "zipcode" : "11218" }, "borough" : "Brooklyn", "name" : "Carvel Ice Cream", "restaurant_id" : "40360076" }
+{ "address" : { "zipcode" : "11004" }, "borough" : "Queens", "name" : "Carvel Ice Cream", "restaurant_id" : "40361322" }
+{ "address" : { "zipcode" : "11209" }, "borough" : "Brooklyn", "name" : "Nordic Delicacies", "restaurant_id" : "40361390" }
+{ "address" : { "zipcode" : "10021" }, "borough" : "Manhattan", "name" : "Glorious Food", "restaurant_id" : "40361521" }
+{ "address" : { "zipcode" : "11215" }, "borough" : "Brooklyn", "name" : "The Movable Feast", "restaurant_id" : "40361606" }
+
+5.Writer a MongoDB query to display the first 5 restaurants which is in the borough Bronx.
+db.addresses.find({borough:"Bronx"}).limit(5)
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "address" : { "building" : "1007", "coord" : [ -73.856077, 40.848447 ], "street" : "Morris Park Ave", "zipcode" : "10462" }, "borough" : "Bronx", "cuisine" : "Bakery", "grades" : [ { "date" : ISODate("2014-03-03T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-09-11T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2013-01-24T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-11-23T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2011-03-10T00:00:00Z"), "grade" : "B", "score" : 14 } ], "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1e"), "address" : { "building" : "2300", "coord" : [ -73.8786113, 40.8502883 ], "street" : "Southern Boulevard", "zipcode" : "10460" }, "borough" : "Bronx", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-05-28T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2013-06-19T00:00:00Z"), "grade" : "A", "score" : 4 }, { "date" : ISODate("2012-06-15T00:00:00Z"), "grade" : "A", "score" : 3 } ], "name" : "Wild Asia", "restaurant_id" : "40357217" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb33"), "address" : { "building" : "1006", "coord" : [ -73.84856870000002, 40.8903781 ], "street" : "East 233 Street", "zipcode" : "10466" }, "borough" : "Bronx", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "grades" : [ { "date" : ISODate("2014-04-24T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-09-05T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-02-21T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-07-03T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2011-07-11T00:00:00Z"), "grade" : "A", "score" : 5 } ], "name" : "Carvel Ice Cream", "restaurant_id" : "40363093" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb37"), "address" : { "building" : "1236", "coord" : [ -73.8893654, 40.81376179999999 ], "street" : "238 Spofford Ave", "zipcode" : "10474" }, "borough" : "Bronx", "cuisine" : "Chinese", "grades" : [ { "date" : ISODate("2013-12-30T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2013-01-08T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-06-12T00:00:00Z"), "grade" : "B", "score" : 15 } ], "name" : "Happy Garden", "restaurant_id" : "40363289" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb49"), "address" : { "building" : "277", "coord" : [ -73.8941893, 40.8634684 ], "street" : "East Kingsbridge Road", "zipcode" : "10458" }, "borough" : "Bronx", "cuisine" : "Chinese", "grades" : [ { "date" : ISODate("2014-03-03T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-09-26T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-03-19T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-08-29T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2011-08-17T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "Happy Garden", "restaurant_id" : "40364296" }
+
+6.Writer a MongoDB query to display all the restaurants which is in the borough Bronx.
+{
+        "_id" : ObjectId("6077e024bbae6913b853fb14"),
+        "address" : {
+                "building" : "1007",
+                "coord" : [
+                        -73.856077,
+                        40.848447
+                ],
+                "street" : "Morris Park Ave",
+                "zipcode" : "10462"
+        },
+        "borough" : "Bronx",
+        "cuisine" : "Bakery",
+        "grades" : [
+                {
+                        "date" : ISODate("2014-03-03T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 2
+                },
+                {
+                        "date" : ISODate("2013-09-11T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 6
+                },
+                {
+                        "date" : ISODate("2013-01-24T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 10
+                },
+                {
+                        "date" : ISODate("2011-11-23T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 9
+                },
+                {
+                        "date" : ISODate("2011-03-10T00:00:00Z"),
+                        "grade" : "B",
+                        "score" : 14
+                }
+        ],
+        "name" : "Morris Park Bake Shop",
+        "restaurant_id" : "30075445"
+}
+{
+        "_id" : ObjectId("6077e024bbae6913b853fb1e"),
+        "address" : {
+                "building" : "2300",
+                "coord" : [
+                        -73.8786113,
+                        40.8502883
+                ],
+                "street" : "Southern Boulevard",
+                "zipcode" : "10460"
+        },
+        "borough" : "Bronx",
+        "cuisine" : "American ",
+        "grades" : [
+                {
+                        "date" : ISODate("2014-05-28T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 11
+                },
+                {
+                        "date" : ISODate("2013-06-19T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 4
+                },
+                {
+                        "date" : ISODate("2012-06-15T00:00:00Z"),
+                        "grade" : "A",
+                        "score" : 3
+                }
+        ],
+        "name" : "Wild Asia",
+        "restaurant_id" : "40357217"
+}
+
+7.Writer a MongoDB query to display to display the next 5 restaurants after skipping first 5 which are in the Bronx.
+db.addresses.find({borough:"Bronx"}).skip(5).limit(5)
+{ "_id" : ObjectId("6077e024bbae6913b853fb51"), "address" : { "building" : "658", "coord" : [ -73.81363999999999, 40.82941100000001 ], "street" : "Clarence Ave", "zipcode" : "10465" }, "borough" : "Bronx", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-06-21T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2012-07-11T00:00:00Z"), "grade" : "A", "score" : 10 } ], "name" : "Manhem Club", "restaurant_id" : "40364363" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb69"), "address" : { "building" : "2222", "coord" : [ -73.84971759999999, 40.8304811 ], "street" : "Haviland Avenue", "zipcode" : "10462" }, "borough" : "Bronx", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-12-18T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2014-05-01T00:00:00Z"), "grade" : "B", "score" : 17 }, { "date" : ISODate("2013-03-14T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2012-09-20T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-02-08T00:00:00Z"), "grade" : "B", "score" : 19 } ], "name" : "The New Starling Athletic Club Of The Bronx", "restaurant_id" : "40364956" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb81"), "address" : { "building" : "72", "coord" : [ -73.92506, 40.8275556 ], "street" : "East  161 Street", "zipcode" : "10451" }, "borough" : "Bronx", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-04-15T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2013-11-14T00:00:00Z"), "grade" : "A", "score" : 4 }, { "date" : ISODate("2013-07-29T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-12-31T00:00:00Z"), "grade" : "B", "score" : 15 }, { "date" : ISODate("2012-05-30T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-01-09T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-08-15T00:00:00Z"), "grade" : "C", "score" : 37 } ], "name" : "Yankee Tavern", "restaurant_id" : "40365499" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb94"), "address" : { "building" : "331", "coord" : [ -73.87786539999999, 40.8724377 ], "street" : "East  204 Street", "zipcode" : "10467" }, "borough" : "Bronx", "cuisine" : "Irish", "grades" : [ { "date" : ISODate("2014-08-26T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2014-03-26T00:00:00Z"), "grade" : "B", "score" : 23 }, { "date" : ISODate("2013-09-11T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-12-18T00:00:00Z"), "grade" : "B", "score" : 27 }, { "date" : ISODate("2011-10-20T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "Mcdwyers Pub", "restaurant_id" : "40365893" }
+{ "_id" : ObjectId("6077e024bbae6913b853fbad"), "address" : { "building" : "5820", "coord" : [ -73.9002615, 40.885186 ], "street" : "Broadway", "zipcode" : "10463" }, "borough" : "Bronx", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-02-26T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2013-10-09T00:00:00Z"), "grade" : "B", "score" : 19 }, { "date" : ISODate("2013-05-15T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-11-20T00:00:00Z"), "grade" : "B", "score" : 18 }, { "date" : ISODate("2011-10-17T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-06-22T00:00:00Z"), "grade" : "C", "score" : 35 } ], "name" : "The Punch Bowl", "restaurant_id" : "40366497" }
+
+8.Writer a MongoDB query to find the restaurants who achieved a score more than 90.
+db.addresses.find({grades:{$elemMatch:{"score":{$gt:90}}}})
+{ "_id" : ObjectId("6077e024bbae6913b853fc72"), "address" : { "building" : "65", "coord" : [ -73.9782725, 40.7624022 ], "street" : "West   54 Street", "zipcode" : "10019" }, "borough" : "Manhattan", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-08-22T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2014-03-28T00:00:00Z"), "grade" : "C", "score" : 131 }, { "date" : ISODate("2013-09-25T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2013-04-08T00:00:00Z"), "grade" : "B", "score" : 25 }, { "date" : ISODate("2012-10-15T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2011-10-19T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "Murals On 54/Randolphs'S", "restaurant_id" : "40372466" }
+{ "_id" : ObjectId("6077e024bbae6913b853fd13"), "address" : { "building" : "345", "coord" : [ -73.9864626, 40.7266739 ], "street" : "East 6 Street", "zipcode" : "10003" }, "borough" : "Manhattan", "cuisine" : "Indian", "grades" : [ { "date" : ISODate("2014-09-15T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2014-01-14T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2013-05-30T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-04-24T00:00:00Z"), "grade" : "P", "score" : 2 }, { "date" : ISODate("2012-10-01T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-04-06T00:00:00Z"), "grade" : "C", "score" : 92 }, { "date" : ISODate("2011-11-03T00:00:00Z"), "grade" : "C", "score" : 41 } ], "name" : "Gandhi", "restaurant_id" : "40381295" }
+{ "_id" : ObjectId("6077e024bbae6913b853fe76"), "address" : { "building" : "130", "coord" : [ -73.984758, 40.7457939 ], "street" : "Madison Avenue", "zipcode" : "10016" }, "borough" : "Manhattan", "cuisine" : "Pizza/Italian", "grades" : [ { "date" : ISODate("2014-12-24T00:00:00Z"), "grade" : "Z", "score" : 31 }, { "date" : ISODate("2014-06-17T00:00:00Z"), "grade" : "C", "score" : 98 }, { "date" : ISODate("2013-12-12T00:00:00Z"), "grade" : "C", "score" : 32 }, { "date" : ISODate("2013-05-22T00:00:00Z"), "grade" : "B", "score" : 21 }, { "date" : ISODate("2012-05-02T00:00:00Z"), "grade" : "A", "score" : 11 } ], "name" : "Bella Napoli", "restaurant_id" : "40393488" }
+
+9.Writer a MongoDB query to find the restaurants who achieved a score more than 80 but less than 100.
+db.addresses.find({grades:{$elemMatch:{"score":{$gt:80,$lt:100}}}})
+{ "_id" : ObjectId("6077e024bbae6913b853fd13"), "address" : { "building" : "345", "coord" : [ -73.9864626, 40.7266739 ], "street" : "East 6 Street", "zipcode" : "10003" }, "borough" : "Manhattan", "cuisine" : "Indian", "grades" : [ { "date" : ISODate("2014-09-15T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2014-01-14T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2013-05-30T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-04-24T00:00:00Z"), "grade" : "P", "score" : 2 }, { "date" : ISODate("2012-10-01T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-04-06T00:00:00Z"), "grade" : "C", "score" : 92 }, { "date" : ISODate("2011-11-03T00:00:00Z"), "grade" : "C", "score" : 41 } ], "name" : "Gandhi", "restaurant_id" : "40381295" }
+{ "_id" : ObjectId("6077e024bbae6913b853fe76"), "address" : { "building" : "130", "coord" : [ -73.984758, 40.7457939 ], "street" : "Madison Avenue", "zipcode" : "10016" }, "borough" : "Manhattan", "cuisine" : "Pizza/Italian", "grades" : [ { "date" : ISODate("2014-12-24T00:00:00Z"), "grade" : "Z", "score" : 31 }, { "date" : ISODate("2014-06-17T00:00:00Z"), "grade" : "C", "score" : 98 }, { "date" : ISODate("2013-12-12T00:00:00Z"), "grade" : "C", "score" : 32 }, { "date" : ISODate("2013-05-22T00:00:00Z"), "grade" : "B", "score" : 21 }, { "date" : ISODate("2012-05-02T00:00:00Z"), "grade" : "A", "score" : 11 } ], "name" : "Bella Napoli", "restaurant_id" : "40393488" }
+{ "_id" : ObjectId("6077e026bbae6913b85406e2"), "address" : { "building" : "", "coord" : [ -74.0163793, 40.7167671 ], "street" : "Hudson River", "zipcode" : "10282" }, "borough" : "Manhattan", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-06-27T00:00:00Z"), "grade" : "C", "score" : 89 }, { "date" : ISODate("2013-06-06T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2012-06-19T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "West 79Th Street Boat Basin Cafe", "restaurant_id" : "40756344" }
+
+10.Write a Mongodb query to find the restaurants which locate in latitude value less than -95.754168.
+db.addresses.find({"address.coord":{$lt:-95.754168}});
+{ "_id" : ObjectId("6077e025bbae6913b854015c"), "address" : { "building" : "3707", "coord" : [ -101.8945214, 33.5197474 ], "street" : "82 Street", "zipcode" : "11372" }, "borough" : "Queens", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-06-04T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-11-07T00:00:00Z"), "grade" : "B", "score" : 19 }, { "date" : ISODate("2013-05-17T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-08-29T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-04-03T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2011-11-16T00:00:00Z"), "grade" : "A", "score" : 7 } ], "name" : "Burger King", "restaurant_id" : "40534067" }
+{ "_id" : ObjectId("6077e026bbae6913b85404c7"), "address" : { "building" : "15259", "coord" : [ -119.6368672, 36.2504996 ], "street" : "10 Avenue", "zipcode" : "11357" }, "borough" : "Queens", "cuisine" : "Italian", "grades" : [ { "date" : ISODate("2014-09-04T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2014-03-26T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2013-03-04T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-09-27T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-04-20T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2011-11-23T00:00:00Z"), "grade" : "C", "score" : 34 } ], "name" : "Cascarino'S", "restaurant_id" : "40668681" }
+{ "_id" : ObjectId("6077e026bbae6913b854096d"), "address" : { "building" : "60", "coord" : [ -111.9975205, 42.0970258 ], "street" : "West Side Highway", "zipcode" : "10006" }, "borough" : "Manhattan", "cuisine" : "Japanese", "grades" : [ { "date" : ISODate("2014-03-20T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2013-06-28T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-07-05T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2011-07-27T00:00:00Z"), "grade" : "A", "score" : 2 } ], "name" : "Sports Center At Chelsea Piers (Sushi Bar)", "restaurant_id" : "40882356" }
+
+11+12.Write a Mongodb query to find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and longitude less than -65.754168.
+db.addresses.find({"cuisine":{$ne:"American"},"grades.score":{$gt:70},"address.coord":{$lt:-65.754168}})
+{ "_id" : ObjectId("6077e024bbae6913b853fc72"), "address" : { "building" : "65", "coord" : [ -73.9782725, 40.7624022 ], "street" : "West   54 Street", "zipcode" : "10019" }, "borough" : "Manhattan", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-08-22T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2014-03-28T00:00:00Z"), "grade" : "C", "score" : 131 }, { "date" : ISODate("2013-09-25T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2013-04-08T00:00:00Z"), "grade" : "B", "score" : 25 }, { "date" : ISODate("2012-10-15T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2011-10-19T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "Murals On 54/Randolphs'S", "restaurant_id" : "40372466" }
+{ "_id" : ObjectId("6077e024bbae6913b853fd13"), "address" : { "building" : "345", "coord" : [ -73.9864626, 40.7266739 ], "street" : "East 6 Street", "zipcode" : "10003" }, "borough" : "Manhattan", "cuisine" : "Indian", "grades" : [ { "date" : ISODate("2014-09-15T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2014-01-14T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2013-05-30T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-04-24T00:00:00Z"), "grade" : "P", "score" : 2 }, { "date" : ISODate("2012-10-01T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-04-06T00:00:00Z"), "grade" : "C", "score" : 92 }, { "date" : ISODate("2011-11-03T00:00:00Z"), "grade" : "C", "score" : 41 } ], "name" : "Gandhi", "restaurant_id" : "40381295" }
+{ "_id" : ObjectId("6077e024bbae6913b853fda1"), "address" : { "building" : "14", "coord" : [ -73.9883909, 40.740735 ], "street" : "East   23 Street", "zipcode" : "10010" }, "borough" : "Manhattan", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-10-28T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2014-04-10T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-08-08T00:00:00Z"), "grade" : "C", "score" : 58 }, { "date" : ISODate("2013-02-14T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-06-15T00:00:00Z"), "grade" : "C", "score" : 71 } ], "name" : "Live Bait Bar & Restaurant", "restaurant_id" : "40387237" }
+
+13.Write a Mongodb query to find the restaurants that do not prepare any cuisine of 'American' and achieved a grade point 'A' not belongs to the borough Brooklyn. The document must be displayed according to the cuisine in descending order.
+ db.addresses.find({"cuisine":{$ne:"American"},"grades.grade":"A","borough":{$ne:"Brooklyn"}}).sort({"cuisine":-1})
+{ "_id" : ObjectId("6077e025bbae6913b8540220"), "address" : { "building" : "89", "coord" : [ -73.9995899, 40.7168015 ], "street" : "Baxter Street", "zipcode" : "10013" }, "borough" : "Manhattan", "cuisine" : "Vietnamese/Cambodian/Malaysia", "grades" : [ { "date" : ISODate("2014-08-21T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2013-08-31T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2013-04-11T00:00:00Z"), "grade" : "C", "score" : 3 }, { "date" : ISODate("2012-10-17T00:00:00Z"), "grade" : "A", "score" : 4 }, { "date" : ISODate("2012-05-15T00:00:00Z"), "grade" : "A", "score" : 10 } ], "name" : "Thai Son", "restaurant_id" : "40559606" }
+{ "_id" : ObjectId("6077e025bbae6913b85402d9"), "address" : { "building" : "8278", "coord" : [ -73.88143509999999, 40.7412552 ], "street" : "Broadway", "zipcode" : "11373" }, "borough" : "Queens", "cuisine" : "Vietnamese/Cambodian/Malaysia", "grades" : [ { "date" : ISODate("2014-06-12T00:00:00Z"), "grade" : "B", "score" : 21 }, { "date" : ISODate("2013-05-20T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-12-26T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-12-03T00:00:00Z"), "grade" : "P", "score" : 5 }, { "date" : ISODate("2012-05-04T00:00:00Z"), "grade" : "B", "score" : 27 } ], "name" : "Pho Bac Vietnamese Seafood Cuisine", "restaurant_id" : "40578058" }
+{ "_id" : ObjectId("6077e026bbae6913b85406c2"), "address" : { "building" : "148", "coord" : [ -74.000254, 40.7172727 ], "street" : "Centre Street", "zipcode" : "10013" }, "borough" : "Manhattan", "cuisine" : "Vietnamese/Cambodian/Malaysia", "grades" : [ { "date" : ISODate("2014-10-01T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2014-05-19T00:00:00Z"), "grade" : "C", "score" : 5 }, { "date" : ISODate("2013-11-15T00:00:00Z"), "grade" : "B", "score" : 14 }, { "date" : ISODate("2013-03-08T00:00:00Z"), "grade" : "B", "score" : 25 }, { "date" : ISODate("2012-05-22T00:00:00Z"), "grade" : "B", "score" : 23 }, { "date" : ISODate("2011-10-27T00:00:00Z"), "grade" : "A", "score" : 9 } ], "name" : "Nha-Trang Centre Vietnam Restaurant", "restaurant_id" : "40751226" }
+
+14.Write a Mongodb query to find the restaurant id, name, borough and cuisine for those restauramts which contains 'Wil'as first there letters for its name.
+db.addresses.find({name:/^Wil/},{"restaurant_id":1, "name":1, "borough":1,"cuisine":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb1b"), "borough" : "Brooklyn", "cuisine" : "Delicatessen", "name" : "Wilken'S Fine Food", "restaurant_id" : "40356483" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1e"), "borough" : "Bronx", "cuisine" : "American ", "name" : "Wild Asia", "restaurant_id" : "40357217" }
+{ "_id" : ObjectId("6077e026bbae6913b8540923"), "borough" : "Bronx", "cuisine" : "Pizza", "name" : "Wilbel Pizza", "restaurant_id" : "40871979" }
+
+15.Write a Mongodb query to find the restaurant id, name, borough and cuisine for those restauramts which contains 'ces'as last there letters for its name.
+db.addresses.find({name:/ces$/},{"restaurant_id":1, "name":1, "borough":1,"cuisine":1})
+{ "_id" : ObjectId("6077e025bbae6913b853ffa7"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Pieces", "restaurant_id" : "40399910" }
+{ "_id" : ObjectId("6077e025bbae6913b8540066"), "borough" : "Queens", "cuisine" : "American ", "name" : "S.M.R Restaurant Services", "restaurant_id" : "40403857" }
+{ "_id" : ObjectId("6077e025bbae6913b854006c"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Good Shepherd Services", "restaurant_id" : "40403989" }
+{ "_id" : ObjectId("6077e026bbae6913b854051f"), "borough" : "Queens", "cuisine" : "Ice Cream, Gelato, Yogurt, Ices", "name" : "The Ice Box-Ralph'S Famous Italian Ices", "restaurant_id" : "40690899" }
+{ "_id" : ObjectId("6077e026bbae6913b8540721"), "borough" : "Brooklyn", "cuisine" : "Jewish/Kosher", "name" : "Alices", "restaurant_id" : "40782042" }
+{ "_id" : ObjectId("6077e026bbae6913b854093d"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Re: Sources", "restaurant_id" : "40876068" }
+
+16.Write a Mongodb query to find the restaurant id, name, borough and cuisine for those restauramts which contains 'Reg'as there letters somewhere in its name.
+db.addresses.find({"name":/.*Reg.*/},{"restaurant_id":1, "name":1, "borough":1,"cuisine":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb1c"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Regina Caterers", "restaurant_id" : "40356649" }
+{ "_id" : ObjectId("6077e024bbae6913b853fc19"), "borough" : "Manhattan", "cuisine" : "Café/Coffee/Tea", "name" : "Caffe Reggio", "restaurant_id" : "40369418" }
+{ "_id" : ObjectId("6077e024bbae6913b853fd28"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Regency Hotel", "restaurant_id" : "40382679" }
+{ "_id" : ObjectId("6077e025bbae6913b8540045"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Regency Whist Club", "restaurant_id" : "40402377" }
+
+17.Write a Mongodb query to find the restaurants which belong to the borough Bronx and prepared either American or Chinese dish.
+ db.addresses.find({borough:"Bronx",$or:[{cuisine:"American"},{cuisine:"Chinese"}]})
+{ "_id" : ObjectId("6077e024bbae6913b853fb37"), "address" : { "building" : "1236", "coord" : [ -73.8893654, 40.81376179999999 ], "street" : "238 Spofford Ave", "zipcode" : "10474" }, "borough" : "Bronx", "cuisine" : "Chinese", "grades" : [ { "date" : ISODate("2013-12-30T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2013-01-08T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-06-12T00:00:00Z"), "grade" : "B", "score" : 15 } ], "name" : "Happy Garden", "restaurant_id" : "40363289" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb49"), "address" : { "building" : "277", "coord" : [ -73.8941893, 40.8634684 ], "street" : "East Kingsbridge Road", "zipcode" : "10458" }, "borough" : "Bronx", "cuisine" : "Chinese", "grades" : [ { "date" : ISODate("2014-03-03T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-09-26T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-03-19T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-08-29T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2011-08-17T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "Happy Garden", "restaurant_id" : "40364296" }
+{ "_id" : ObjectId("6077e025bbae6913b85400c1"), "address" : { "building" : "2459", "coord" : [ -73.8929629, 40.8601605 ], "street" : "Webster Avenue", "zipcode" : "10458" }, "borough" : "Bronx", "cuisine" : "Chinese", "grades" : [ { "date" : ISODate("2014-12-23T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2014-01-07T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2012-12-28T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-07-18T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "China Wok Ii", "restaurant_id" : "40510328" }
+
+18.Write a Mongodb query to find the restaurant id,name, borough and cuisine for those restaurants which belongs to the borough Staten Island or Queens or Bronxor Brooklyn.
+db.addresses.find({"borough":{$in:["Staten Island","Queens"," Bronx", "Brooklyn"]}},{"restaurant_id":1, "name":1, "borough":1, "cuisine":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb15"), "borough" : "Brooklyn", "cuisine" : "Hamburgers", "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb17"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Riviera Caterer", "restaurant_id" : "40356018" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb18"), "borough" : "Queens", "cuisine" : "Jewish/Kosher", "name" : "Tov Kosher Kitchen", "restaurant_id" : "40356068" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb19"), "borough" : "Queens", "cuisine" : "American ", "name" : "Brunos On The Boulevard", "restaurant_id" : "40356151" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1a"), "borough" : "Staten Island", "cuisine" : "Jewish/Kosher", "name" : "Kosher Island", "restaurant_id" : "40356442" }
+
+19.Write a Mongodb query to find the restaurant id,name, borough and cuisine for those restaurants which are not belonging to the borough Staten Island or Queens or Bronxor Brooklyn.
+db.addresses.find({"borough":{$nin:["Staten Island","Queens"," Bronx", "Brooklyn"]}},{"restaurant_id":1, "name":1, "borough":1, "cuisine":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "borough" : "Bronx", "cuisine" : "Bakery", "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb16"), "borough" : "Manhattan", "cuisine" : "Irish", "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb1e"), "borough" : "Bronx", "cuisine" : "American ", "name" : "Wild Asia", "restaurant_id" : "40357217" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb21"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "1 East 66Th Street Kitchen", "restaurant_id" : "40359480" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb26"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "Glorious Food", "restaurant_id" : "40361521" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb29"), "borough" : "Manhattan", "cuisine" : "Delicatessen", "name" : "Bully'S Deli", "restaurant_id" : "40361708" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb2b"), "borough" : "Manhattan", "cuisine" : "Chicken", "name" : "Harriet'S Kitchen", "restaurant_id" : "40362098" }
+
+20.Write a Mongodb query to find the restaurant id,name, borough and cuisine for those restaurants which achieved a score which is not more than 10.
+db.addresses.find({"grades.score":{$not:{$gt:10}}},{"restaurant_id":1, "name":1, "borough":1, "cuisine":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb1f"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "C & C Catering Service", "restaurant_id" : "40357437" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb21"), "borough" : "Manhattan", "cuisine" : "American ", "name" : "1 East 66Th Street Kitchen", "restaurant_id" : "40359480" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb25"), "borough" : "Brooklyn", "cuisine" : "Delicatessen", "name" : "Nordic Delicacies", "restaurant_id" : "40361390" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb2e"), "borough" : "Brooklyn", "cuisine" : "Hamburgers", "name" : "White Castle", "restaurant_id" : "40362344" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb41"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Sonny'S Heros", "restaurant_id" : "40363744" }
+
+21.Write a Mongodb query to find the restaurant id,name, borough and cuisine for those restaurants which prepared dish except 'American' and 'Chinees' or restaurant's name begins with letter 'Wil'.
+ db.addresses.find(
+... {$or:[
+... {name:/^Wil/},
+... {"$and":[
+... {"cuisine":{$ne:"American"}},
+... {"cuisine":{$ne:"Chinees"}}]}
+... ]}
+... ,{"restaurant_id":1, "name":1, "borough":1, "cuisine":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "borough" : "Bronx", "cuisine" : "Bakery", "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb15"), "borough" : "Brooklyn", "cuisine" : "Hamburgers", "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb16"), "borough" : "Manhattan", "cuisine" : "Irish", "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb17"), "borough" : "Brooklyn", "cuisine" : "American ", "name" : "Riviera Caterer", "restaurant_id" : "40356018" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb18"), "borough" : "Queens", "cuisine" : "Jewish/Kosher", "name" : "Tov Kosher Kitchen", "restaurant_id" : "40356068" }
+
+22.Write a Mongodb query to find the restaurant id,name, and grades for those restaurants which achieved a grade 'A' and scored 11 on as ISODate "2014-08-11T00:00:00Z" among many of survey dates.
+db.addresses.find(
+... {
+... "grades.date":ISODate("2014-08-11T00:00:00Z"),
+... "grades.grade":"A",
+... "grades.score":11},
+... {"restaurant_id":1, "name":1, "grades":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb92"), "grades" : [ { "date" : ISODate("2014-08-11T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2013-07-22T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2013-03-14T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2012-07-02T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-02-02T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-08-24T00:00:00Z"), "grade" : "A", "score" : 11 } ], "name" : "Neary'S Pub", "restaurant_id" : "40365871" }
+{ "_id" : ObjectId("6077e024bbae6913b853fc6d"), "grades" : [ { "date" : ISODate("2014-08-11T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2013-12-10T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2013-06-10T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2012-06-08T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-01-25T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2011-09-13T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Don Filippo Restaurant", "restaurant_id" : "40372417" }
+{ "_id" : ObjectId("6077e025bbae6913b853ff33"), "grades" : [ { "date" : ISODate("2014-08-11T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2013-08-29T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-04-25T00:00:00Z"), "grade" : "C", "score" : 2 }, { "date" : ISODate("2012-10-23T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-04-16T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2011-11-15T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Mustang Sally'S Restaurant", "restaurant_id" : "40397374" }
+
+23.Write a Mongodb query to find the restaurant id,name, and grades for those restaurants where the 2nd element of grades array contains a grade of "A" and scored 9 on as ISODate "2014-08-11T00:00:00Z".
+db.addresses.find(
+... ... {
+... "grades.1.date":ISODate("2014-08-11T00:00:00Z"),
+... "grades.1.grade":"A",
+... "grades.1.score":9},
+... {"restaurant_id":1, "name":1, "grades":1})
+{ "_id" : ObjectId("6077e025bbae6913b854013f"), "grades" : [ { "date" : ISODate("2015-01-12T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2014-08-11T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2014-01-14T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2013-02-07T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-04-30T00:00:00Z"), "grade" : "A", "score" : 11 } ], "name" : "Club Macanudo (Cigar Bar)", "restaurant_id" : "40526406" }
+
+24.Write a Mongodb query to find the restaurant id,name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more the 42 and upto 52.
+db.addresses.find({"address.coord.1":{$gt:42, $lte:52}},{"restaurant_id":1, "name":1,"address":1,"coord":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fdb6"), "address" : { "building" : "47", "coord" : [ -78.877224, 42.89546199999999 ], "street" : "Broadway @ Trinity Pl", "zipcode" : "10006" }, "name" : "T.G.I. Friday'S", "restaurant_id" : "40387990" }
+{ "_id" : ObjectId("6077e024bbae6913b853fde2"), "address" : { "building" : "1", "coord" : [ -0.7119979, 51.6514664 ], "street" : "Pennplaza E, Penn Sta", "zipcode" : "10001" }, "name" : "T.G.I. Fridays", "restaurant_id" : "40388936" }
+{ "_id" : ObjectId("6077e025bbae6913b854003b"), "address" : { "building" : "3000", "coord" : [ -87.86567699999999, 42.61150920000001 ], "street" : "47 Avenue", "zipcode" : "11101" }, "name" : "Di Luvio'S Deli", "restaurant_id" : "40402284" }
+{ "_id" : ObjectId("6077e025bbae6913b8540270"), "address" : { "building" : "21972199", "coord" : [ -78.589606, 42.8912372 ], "street" : "Broadway", "zipcode" : "10024" }, "name" : "La Caridad 78", "restaurant_id" : "40568285" }
+{ "_id" : ObjectId("6077e026bbae6913b8540942"), "address" : { "building" : "7981", "coord" : [ -84.9751215, 45.4713351 ], "street" : "Hoyt Street", "zipcode" : "11201" }, "name" : "Bijan'S", "restaurant_id" : "40876618" }
+
+25.Write a Mongodb query to arrange the name of the restaurants in ascending order along with all the columns.
+db.addresses.find().sort({"name":1})
+{ "_id" : ObjectId("6077e026bbae6913b85407a4"), "address" : { "building" : "129", "coord" : [ -73.962943, 40.685007 ], "street" : "Gates Avenue", "zipcode" : "11238" }, "borough" : "Brooklyn", "cuisine" : "Italian", "grades" : [ { "date" : ISODate("2014-03-06T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2013-08-29T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-03-08T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2012-06-27T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2011-11-17T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "(Lewis Drug Store) Locanda Vini E Olii", "restaurant_id" : "40804423" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb21"), "address" : { "building" : "1", "coord" : [ -73.96926909999999, 40.7685235 ], "street" : "East   66 Street", "zipcode" : "10065" }, "borough" : "Manhattan", "cuisine" : "American ", "grades" : [ { "date" : ISODate("2014-05-07T00:00:00Z"), "grade" : "A", "score" : 3 }, { "date" : ISODate("2013-05-03T00:00:00Z"), "grade" : "A", "score" : 4 }, { "date" : ISODate("2012-04-30T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2011-12-27T00:00:00Z"), "grade" : "A", "score" : 0 } ], "name" : "1 East 66Th Street Kitchen", "restaurant_id" : "40359480" }
+{ "_id" : ObjectId("6077e026bbae6913b8540333"), "address" : { "building" : "10016", "coord" : [ -73.8216636, 40.5838155 ], "street" : "Rockaway Beach Boulevard", "zipcode" : "11694" }, "borough" : "Queens", "cuisine" : "Delicatessen", "grades" : [ { "date" : ISODate("2014-01-28T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2013-08-20T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2013-03-19T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2012-03-06T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-03-01T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "101 Deli", "restaurant_id" : "40591271" }
+
+26.Write a Mongodb query to arrange the name of the restaurants in descending order along with all the columns.
+db.addresses.find().sort({"name":-1})
+{ "_id" : ObjectId("6077e024bbae6913b853fbd3"), "address" : { "building" : "6946", "coord" : [ -73.8811834, 40.7017759 ], "street" : "Myrtle Avenue", "zipcode" : "11385" }, "borough" : "Queens", "cuisine" : "German", "grades" : [ { "date" : ISODate("2014-09-24T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2014-04-17T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2013-03-12T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-10-02T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2012-05-09T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2011-12-28T00:00:00Z"), "grade" : "B", "score" : 24 } ], "name" : "Zum Stammtisch", "restaurant_id" : "40367377" }
+{ "_id" : ObjectId("6077e026bbae6913b854070d"), "address" : { "building" : "107109", "coord" : [ -73.9744668, 40.731155 ], "street" : "Avenue C", "zipcode" : "10009" }, "borough" : "Manhattan", "cuisine" : "German", "grades" : [ { "date" : ISODate("2014-03-04T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2013-08-21T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2013-02-27T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-06-05T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2011-12-20T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2011-07-15T00:00:00Z"), "grade" : "A", "score" : 6 } ], "name" : "Zum Schneider", "restaurant_id" : "40763382" }
+{ "_id" : ObjectId("6077e026bbae6913b8540947"), "address" : { "building" : "2905", "coord" : [ -73.91337299999999, 40.775064 ], "street" : "23 Avenue", "zipcode" : "11105" }, "borough" : "Queens", "cuisine" : "Greek", "grades" : [ { "date" : ISODate("2014-09-29T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2014-04-18T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2013-03-19T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2012-10-03T00:00:00Z"), "grade" : "B", "score" : 20 }, { "date" : ISODate("2012-05-07T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Zorba'S", "restaurant_id" : "40877247" }
+
+27. Write a Mongodb query to arrange the name of the cuisine in ascending order and for that same cuisine borough should be in descending order.
+db.addresses.find().sort({"cuisine":1, "borough":-1})
+{ "_id" : ObjectId("6077e025bbae6913b85401ff"), "address" : { "building" : "1345", "coord" : [ -73.959249, 40.768076 ], "street" : "2 Avenue", "zipcode" : "10021" }, "borough" : "Manhattan", "cuisine" : "Afghan", "grades" : [ { "date" : ISODate("2014-10-07T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2013-10-23T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2012-10-26T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-04-26T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2012-01-12T00:00:00Z"), "grade" : "P", "score" : 10 } ], "name" : "Afghan Kebab House", "restaurant_id" : "40552806" }
+{ "_id" : ObjectId("6077e026bbae6913b854032a"), "address" : { "building" : "34", "coord" : [ -73.9883612, 40.7286391 ], "street" : "St Marks Place", "zipcode" : "10003" }, "borough" : "Manhattan", "cuisine" : "Afghan", "grades" : [ { "date" : ISODate("2014-02-20T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-08-06T00:00:00Z"), "grade" : "B", "score" : 17 }, { "date" : ISODate("2013-01-31T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-05-24T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-12-13T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-08-25T00:00:00Z"), "grade" : "A", "score" : 10 } ], "name" : "Khyber Pass", "restaurant_id" : "40589545" }
+{ "_id" : ObjectId("6077e026bbae6913b85403e3"), "address" : { "building" : "764", "coord" : [ -73.9880435, 40.7641423 ], "street" : "9 Avenue", "zipcode" : "10019" }, "borough" : "Manhattan", "cuisine" : "Afghan", "grades" : [ { "date" : ISODate("2014-12-30T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2013-10-10T00:00:00Z"), "grade" : "B", "score" : 19 }, { "date" : ISODate("2013-02-25T00:00:00Z"), "grade" : "A", "score" : 13 }, { "date" : ISODate("2012-08-09T00:00:00Z"), "grade" : "C", "score" : 2 }, { "date" : ISODate("2012-02-16T00:00:00Z"), "grade" : "A", "score" : 9 } ], "name" : "Afghan Kebab House #1", "restaurant_id" : "40616799" }
+
+28.Write a Mongodb query to know whether all the addresses contains the street or not.
+db.addresses.find({"address.street":{$exists:true}})
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "address" : { "building" : "1007", "coord" : [ -73.856077, 40.848447 ], "street" : "Morris Park Ave", "zipcode" : "10462" }, "borough" : "Bronx", "cuisine" : "Bakery", "grades" : [ { "date" : ISODate("2014-03-03T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-09-11T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2013-01-24T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-11-23T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2011-03-10T00:00:00Z"), "grade" : "B", "score" : 14 } ], "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb15"), "address" : { "building" : "469", "coord" : [ -73.961704, 40.662942 ], "street" : "Flatbush Avenue", "zipcode" : "11225" }, "borough" : "Brooklyn", "cuisine" : "Hamburgers", "grades" : [ { "date" : ISODate("2014-12-30T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2014-07-01T00:00:00Z"), "grade" : "B", "score" : 23 }, { "date" : ISODate("2013-04-30T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2012-05-08T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb16"), "address" : { "building" : "351", "coord" : [ -73.98513559999999, 40.7676919 ], "street" : "West   57 Street", "zipcode" : "10019" }, "borough" : "Manhattan", "cuisine" : "Irish", "grades" : [ { "date" : ISODate("2014-09-06T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-07-22T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-07-31T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2011-12-29T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+
+29.Write a Mongodb query which will select all documents in the restaurants collection where the coord field value is double.
+db.addresses.find({"address.coord":{$type:1}})
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "address" : { "building" : "1007", "coord" : [ -73.856077, 40.848447 ], "street" : "Morris Park Ave", "zipcode" : "10462" }, "borough" : "Bronx", "cuisine" : "Bakery", "grades" : [ { "date" : ISODate("2014-03-03T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-09-11T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2013-01-24T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-11-23T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2011-03-10T00:00:00Z"), "grade" : "B", "score" : 14 } ], "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb15"), "address" : { "building" : "469", "coord" : [ -73.961704, 40.662942 ], "street" : "Flatbush Avenue", "zipcode" : "11225" }, "borough" : "Brooklyn", "cuisine" : "Hamburgers", "grades" : [ { "date" : ISODate("2014-12-30T00:00:00Z"), "grade" : "A", "score" : 8 }, { "date" : ISODate("2014-07-01T00:00:00Z"), "grade" : "B", "score" : 23 }, { "date" : ISODate("2013-04-30T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2012-05-08T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Wendy'S", "restaurant_id" : "30112340" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb16"), "address" : { "building" : "351", "coord" : [ -73.98513559999999, 40.7676919 ], "street" : "West   57 Street", "zipcode" : "10019" }, "borough" : "Manhattan", "cuisine" : "Irish", "grades" : [ { "date" : ISODate("2014-09-06T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-07-22T00:00:00Z"), "grade" : "A", "score" : 11 }, { "date" : ISODate("2012-07-31T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2011-12-29T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Dj Reynolds Pub And Restaurant", "restaurant_id" : "30191841" }
+
+30.Write a Mongodb query which will select the restaurant_id, name and grades for those restaurants which returns 0 as a remainder after dividing the score by 7.
+db.addresses.find(
+... {"grades.score":
+... {$mod:[7,0]}},
+... {"restaurant_id":1, "name":1,"grades":1})
+{ "_id" : ObjectId("6077e024bbae6913b853fb14"), "grades" : [ { "date" : ISODate("2014-03-03T00:00:00Z"), "grade" : "A", "score" : 2 }, { "date" : ISODate("2013-09-11T00:00:00Z"), "grade" : "A", "score" : 6 }, { "date" : ISODate("2013-01-24T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2011-11-23T00:00:00Z"), "grade" : "A", "score" : 9 }, { "date" : ISODate("2011-03-10T00:00:00Z"), "grade" : "B", "score" : 14 } ], "name" : "Morris Park Bake Shop", "restaurant_id" : "30075445" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb17"), "grades" : [ { "date" : ISODate("2014-06-10T00:00:00Z"), "grade" : "A", "score" : 5 }, { "date" : ISODate("2013-06-05T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2012-04-13T00:00:00Z"), "grade" : "A", "score" : 12 }, { "date" : ISODate("2011-10-12T00:00:00Z"), "grade" : "A", "score" : 12 } ], "name" : "Riviera Caterer", "restaurant_id" : "40356018" }
+{ "_id" : ObjectId("6077e024bbae6913b853fb19"), "grades" : [ { "date" : ISODate("2014-11-15T00:00:00Z"), "grade" : "Z", "score" : 38 }, { "date" : ISODate("2014-05-02T00:00:00Z"), "grade" : "A", "score" : 10 }, { "date" : ISODate("2013-03-02T00:00:00Z"), "grade" : "A", "score" : 7 }, { "date" : ISODate("2012-02-10T00:00:00Z"), "grade" : "A", "score" : 13 } ], "name" : "Brunos On The Boulevard", "restaurant_id" : "40356151" }
+
+
+31.Write a Mongodb query to find the restaurant name, borough, longitude and attitude and cuisine for those restaurants which contains 'mon' as three letters somewhere in its name.
+db.addresses.find(
+... { name:
+... {$regex:"mon.*",$options:"i"}
+... },
+... {
+... "name":1,
+... "borough":1,
+... "address.coord":1,
+... "cuisine":1
+... }
+... )
+{ "_id" : ObjectId("6077e024bbae6913b853fba8"), "address" : { "coord" : [ -73.98306099999999, 40.7441419 ] }, "borough" : "Manhattan", "cuisine" : "American ", "name" : "Desmond'S Tavern" }
+{ "_id" : ObjectId("6077e024bbae6913b853fbb1"), "address" : { "coord" : [ -73.8221418, 40.7272376 ] }, "borough" : "Queens", "cuisine" : "Jewish/Kosher", "name" : "Shimons Kosher Pizza" }
+{ "_id" : ObjectId("6077e024bbae6913b853fbbd"), "address" : { "coord" : [ -74.10465599999999, 40.58834 ] }, "borough" : "Staten Island", "cuisine" : "American ", "name" : "Richmond County Country Club" }
+{ "_id" : ObjectId("6077e024bbae6913b853fbe8"), "address" : { "coord" : [ -73.9812843, 40.5947365 ] }, "borough" : "Brooklyn", "cuisine" : "Pizza/Italian", "name" : "Lb Spumoni Gardens" }
+{ "_id" : ObjectId("6077e024bbae6913b853fc3a"), "address" : { "coord" : [ -73.951199, 40.7166026 ] }, "borough" : "Brooklyn", "cuisine" : "Italian", "name" : "Bamonte'S Restaurant" }
+{ "_id" : ObjectId("6077e024bbae6913b853fc71"), "address" : { "coord" : [ -73.924072, 40.76108900000001 ] }, "borough" : "Queens", "cuisine" : "Greek", "name" : "Omonia Cafe" }
+{ "_id" : ObjectId("6077e024bbae6913b853fcc1"), "address" : { "coord" : [ -74.0023353, 40.7333573 ] }, "borough" : "Manhattan", "cuisine" : "American ", "name" : "Manhattan Monster" }
+{ "_id" : ObjectId("6077e024bbae6913b853fcee"), "address" : { "coord" : [ -74.001094, 40.729583 ] }, "borough" : "Manhattan", "cuisine" : "Italian", "name" : "Monte'S" }
+
+32.Write a Mongodb query to find the restaurant name, borough, longitude and latitude and cuisine for those restaurants which contains 'Mad' as first three letters in its name.
+db.addresses.find(
+... { name:
+... {$regex:/^Mad/i}},
+... {"name":1,
+... "borough":1,
+... "address.coord":1,
+... "cuisine":1})
+{ "_id" : ObjectId("6077e025bbae6913b8540050"), "address" : { "coord" : [ -73.9860597, 40.7431194 ] }, "borough" : "Manhattan", "cuisine" : "American ", "name" : "Madison Square" }
+{ "_id" : ObjectId("6077e025bbae6913b854011e"), "address" : { "coord" : [ -73.98302199999999, 40.742313 ] }, "borough" : "Manhattan", "cuisine" : "Indian", "name" : "Madras Mahal" }
+{ "_id" : ObjectId("6077e026bbae6913b85403cc"), "address" : { "coord" : [ -74.000002, 40.72735 ] }, "borough" : "Manhattan", "cuisine" : "American ", "name" : "Madame X" }
+{ "_id" : ObjectId("6077e026bbae6913b854047c"), "address" : { "coord" : [ -73.98171959999999, 40.7499406 ] }, "borough" : "Manhattan", "cuisine" : "French", "name" : "Madison Bistro" }
+
+
